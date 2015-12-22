@@ -20,6 +20,7 @@ public class UDOServer {
      public static void main(String [] args)throws IOException{
          InetAddress address = InetAddress.getLocalHost();  
          int port = 8080; 
+       //与本地一个固定的UDP端口绑定
          socket=new DatagramSocket(port); 
          String msg;
          //先准备一个空数据报文

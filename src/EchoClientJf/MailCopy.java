@@ -259,6 +259,46 @@ public class MailCopy extends javax.swing.JFrame {
                     if (msr!=null){
                         jTextArea1.append("echo:"+msr + '\n');
                     }
+                    if(msr.contains("End")){
+                    	try {
+                    	 String d="Data:2015 dec";
+                         String e="From:20131003506@尹子韶.cn";
+                         String f="Subject:给老师的一封作业邮件";
+                         String g="To:老师收\r\n";
+                         
+                         String h ="I am 尹子韶";
+                         
+                         String i="\r\n.\r\n";
+                         ec.send(d);
+				            ec.send(e);
+							ec.send(f);
+				            ec.send(g);
+				            ec.send(h);
+				            ec.send(i);
+                    	} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                    }
+                    if(msr.contains("successful")){
+                    	try {
+                    		String a="mail from:<20131003506@gdufs.edu.cn>";
+                    		String b ="rcpt to:<20131003506@gdufs.edu.cn>";
+                            String c="Data";
+                           
+                            
+                            
+							ec.send(a);
+							ec.send(b);
+				            ec.send(c);
+				            
+				            
+//				            ec.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                    }
                     }
                 }
             };

@@ -180,12 +180,12 @@ public class hostScannerJFrame extends javax.swing.JFrame {
         String start = jTextField1.getText();
         String host = start;
         String stop = jTextField2.getText();
-        String stopAdd =StringAddOne(stop);
+//        String stopAdd =StringAddOne(stop);
         int timeout =100;
-        while(host!=stopAdd){
+        while(!host.equals(stop)){
             System.out.println(host); 
-            System.out.println(stopAdd); 
-            System.out.println("192.168.207.3"!=stopAdd); 
+            System.out.println(stop); 
+            System.out.println("10.173.18.3".equals(host)); 
             try {
                 InetAddress ia = InetAddress.getByName(host);
                 boolean bool = false;
