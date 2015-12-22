@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author Administrator
  */
-public class Mail extends javax.swing.JFrame {
+public class TCPMailClientJFrame1 extends javax.swing.JFrame {
     private EchoClient ec;
     /**
      * Creates new form IOJFrame
      */
-    public Mail() {
+    public TCPMailClientJFrame1() {
         initComponents();
         ec=null;
         
@@ -174,7 +174,11 @@ public class Mail extends javax.swing.JFrame {
         String msg = jTextField1.getText();
         jTextField1.setText(null);
 //        jTextArea1.append("echo:"+msg + '\n');
-        String username="20131003506@gdufs.edu.cn";
+        jTextArea1.append("Client say:"+msg +"\n");
+        try {
+//            String username="MjAxMzEwMDM1MDZAZ2R1ZnMuZWR1LmNu";
+//            String p = "MTgyMTM0";
+            String username="20131003506@gdufs.edu.cn";
             String password ="182134";
             username = new sun.misc.BASE64Encoder().encode(username.getBytes());
             password = new sun.misc.BASE64Encoder().encode(password.getBytes());
@@ -189,32 +193,50 @@ public class Mail extends javax.swing.JFrame {
             String h ="I am 尹子韶";
             
             String i=".";
-        try {
             ec.send(msg);//发送一串字符。
+            ec.send("auth login");
+                ec.send(username);
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(TCPMailClientJFrame1.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ec.send(username);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(TCPMailClientJFrame1.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ec.send(password);
-//            ec.send(a);
+                ec.send(password);
+                ec.send(a);
+                ec.send(b);
+                ec.send(c);
+                ec.send(d);
+                ec.send(e);
+           
+            
+        } catch (IOException ex) {
+            Logger.getLogger(TCPMailClientJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        if(msg.equals("auth login")){
+//            String username="20131003506@gdufs.edu.cn";
+//            String password ="182134";
+//            username = new sun.misc.BASE64Encoder().encode(username.getBytes());
+//            password = new sun.misc.BASE64Encoder().encode(password.getBytes());
+//            String a="mail from:<20131003506@gdufs.edu.cn>";
+//            String b ="rcpt to:<20131003506@gdufs.edu.cn>";
+//            String c="Data";
+//            String d="sdfasf";
+//            String e =".";
+//            try {
+//                ec.send(username);
+//                ec.send(password);
+//                ec.send(a);
 //                ec.send(b);
 //                ec.send(c);
 //                ec.send(d);
 //                ec.send(e);
-//                ec.send(f);
-//                ec.send(g);
-//                ec.send(h);
-//                ec.send(i);
-        } catch (IOException ex) {
-            Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//            } catch (IOException ex) {
+//                Logger.getLogger(TCPMailClientJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//            
+//        }
         
         
 
@@ -326,7 +348,7 @@ public class Mail extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mail().setVisible(true);
+                new TCPMailClientJFrame1().setVisible(true);
             }
         });
     }
